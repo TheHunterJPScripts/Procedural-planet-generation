@@ -31,3 +31,6 @@ To start the thread that will calculate the data for the mesh sphere generation 
 
 Instantiate the planet into the scene:
 >Planet.InstantiateIntoWorld();
+
+The end result should look like this:
+![](https://i.gyazo.com/a9883d5782209245d504ea0c3c11803a.png)
