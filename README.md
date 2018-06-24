@@ -1,4 +1,4 @@
-# Procedural-planet-generation
+# Procedural-planet-generation (Unity Project)
 Generate planets proceduraly.
 # Low Poly style:
 <a href="https://imgflip.com/gif/2crlvi"><img src="https://i.imgflip.com/2crlvi.gif" title="made at imgflip.com"/></a>
