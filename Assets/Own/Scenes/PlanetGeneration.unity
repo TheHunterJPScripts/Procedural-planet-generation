@@ -319,17 +319,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c102524d8bd6b4b9701d21fae5c93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planets:
+  - {fileID: 11400000, guid: 9e7bf8c25e66ab54f933f870c5658f4b, type: 2}
   controller: {fileID: 9100000, guid: 4701baa62700c4640aa29140a0702d4a, type: 2}
-  name: Planet
-  position: {x: 0, y: 0, z: 0}
-  seed: 0
-  general:
-  - {fileID: 11400000, guid: 70e6513fdce453e498e98ef3f3866c1f, type: 2}
-  - {fileID: 11400000, guid: 9f3a7f26a88a99441b6c1c8b78e179e0, type: 2}
-  ma: {fileID: 2100000, guid: 72506d67ded42e5418fa8fb4426a543f, type: 2}
-  radius: 100
-  sphereSubdivision: 4
-  chunckSubdivision: 2
 --- !u!1 &1381667910
 GameObject:
   m_ObjectHideFlags: 0

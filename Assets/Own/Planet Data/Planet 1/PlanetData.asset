@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa0e208683aaa34c98b81cb9794fc15, type: 3}
+  m_Name: PlanetData
+  m_EditorClassIdentifier: 
+  newName: 
+  seed: 0
+  generateRandomSeed: 0
+  terrainStyle: 1
+  position: {x: 0, y: 0, z: 0}
+  material: {fileID: 2100000, guid: 72506d67ded42e5418fa8fb4426a543f, type: 2}
+  radius: 100
+  subdivisions: 4
+  chunckSubdivisions: 2
+  generationData:
+  - {fileID: 11400000, guid: 36c5270c8271003408ff997afe71ee08, type: 2}
+  - {fileID: 11400000, guid: 70e6513fdce453e498e98ef3f3866c1f, type: 2}
+  - {fileID: 11400000, guid: 9f3a7f26a88a99441b6c1c8b78e179e0, type: 2}
+  ColorPerLayer:
+  - layer: 116
+    color: {r: 0.6431373, g: 0.5058824, b: 0.18431373, a: 0}
+  - layer: 115
+    color: {r: 0.44705886, g: 0.6392157, b: 0.14509805, a: 0}
+  - layer: 114
+    color: {r: 0.5254902, g: 0.6431373, b: 0.13333334, a: 0}
+  - layer: 113
+    color: {r: 0.5254902, g: 0.6431373, b: 0.13333334, a: 0}
+  - layer: 112
+    color: {r: 0.7176471, g: 0.65882355, b: 0.16862746, a: 0}
+  - layer: 0
+    color: {r: 0.9450981, g: 0.83921576, b: 0.49803925, a: 0}

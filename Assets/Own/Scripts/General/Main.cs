@@ -1,27 +1,23 @@
 ﻿using UnityEngine;
 using Generation;
 
+[SerializeField]
 public class Main : MonoBehaviour
 {
+    public PlanetData[] planets;
     public RuntimeAnimatorController controller;
-    public string name;
-    public Vector3 position;
-    public int seed;
-    public GenerationData[] general;
-    public Material ma;
-    public int radius;
-    public int sphereSubdivision;
-    public int chunckSubdivision;
 
     public void Start()
     {
-        seed = Random.Range(0, int.MaxValue);
-        Planet.AddPlanetToQueue(name, position, seed, general, ma, radius, sphereSubdivision, chunckSubdivision, controller);
+        foreach (var item in planets)
+            Planet.AddPlanetToQueue(item.newName, item.position, item.seed,
+                item.generateRandomSeed, item.terrainStyle, item.generationData, item.ColorPerLayer,
+                item.material, item.radius, item.subdivisions, item.chunckSubdivisions, controller);
+
         Planet.StartDataQueue();
     }
     private void Update()
     {
-        Planet.StartGeneratingMeshDataQueue();
         Planet.InstantiateIntoWorld();
     }
 }
