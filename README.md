@@ -13,7 +13,6 @@ Generate planets proceduraly.
 We only need to **import 5 files**: 
 > 'Planet.cs' , 'PlanetData.cs' , 'Polygon.cs' , 'ColorHeight.cs' , 'GenerationData.cs'.
 
-As Kanye West said:
+Create a PlanetData:
 
-> We're living the future so
-> the present is our past.
+![](/images/logo.png)
