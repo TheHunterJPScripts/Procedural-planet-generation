@@ -15,4 +15,4 @@ We only need to **import 5 files**:
 
 Create a PlanetData:
 
-![](/images/logo.png)
+![](/images/PlanetData.png)
