@@ -23,3 +23,5 @@ Generate planets proceduraly.
  ![](https://i.gyazo.com/fc828f1192b56b41dce73e9fcf1df70c.png)
 
 #### Generate the planets:
+> To add a planet to the list of planets that will be created, use the functtion:
+> >
