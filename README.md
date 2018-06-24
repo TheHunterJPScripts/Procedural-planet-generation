@@ -10,19 +10,24 @@ Generate planets proceduraly.
 
 # How to use?
 #### We only need to **import 5 files**: 
-> 'Planet.cs' , 'PlanetData.cs' , 'Polygon.cs' , 'ColorHeight.cs' , 'GenerationData.cs'.
+ 'Planet.cs' , 'PlanetData.cs' , 'Polygon.cs' , 'ColorHeight.cs' , 'GenerationData.cs'.
 
 #### GenerationData:
-> This scriptable object stores the information that will then be used to get the height of the map vertices (it uses perlin noise).
+ This scriptable object stores the information that will then be used to get the height of the map vertices (it uses perlin noise).
 
  ![](https://i.gyazo.com/18a6e7d72de6d9383ae1c72503ba8d45.png)
 
 #### PlanetData:
-> This scriptable object stores the information that will then be used to create a planet.
+ This scriptable object stores the information that will then be used to create a planet.
 
  ![](https://i.gyazo.com/fc828f1192b56b41dce73e9fcf1df70c.png)
 
 #### Generate the planets:
-> To add a planet to the list of planets that will be created, use the functtion:
+ To add a planet to the list of planets that will be created, use the functtion:
+> Planet.AddPlanetToQueu();
 
-![](https://i.gyazo.com/30ca20a176e2eb435d0291fb4e88a060.png)
+To start the thread that will calculate the data for the mesh sphere generation and modification of the landscape (will only be executed after StartDataQueu has ended):
+> Planet.StartDataQueu();
+
+Instantiate the planet into the scene:
+>Planet.InstantiateIntoWorld();
