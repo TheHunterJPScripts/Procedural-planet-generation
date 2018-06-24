@@ -11,8 +11,8 @@ Generate planets proceduraly.
 # How to use?
 ## Import files:
 We only need to **import 5 files**: 
-`<addr>` 'Planet.cs' , 'PlanetData.cs' , 'Polygon.cs' , 'ColorHeight.cs' , 'GenerationData.cs'.
-
+> 'Planet.cs' , 'PlanetData.cs' , 'Polygon.cs' , 'ColorHeight.cs' , 'GenerationData.cs'.
+> asd
 
 
 
