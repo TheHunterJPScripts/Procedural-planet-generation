@@ -17,8 +17,9 @@ Generate planets proceduraly.
 
  ![](https://i.gyazo.com/18a6e7d72de6d9383ae1c72503ba8d45.png)
 
-#### PlanetData
+#### PlanetData:
 > This scriptable object stores the information that will then be used to create a planet.
 
  ![](https://i.gyazo.com/fc828f1192b56b41dce73e9fcf1df70c.png)
 
+#### Generate the planets:
