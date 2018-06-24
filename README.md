@@ -13,6 +13,11 @@ Generate planets proceduraly.
 We only need to **import 5 files**: 
 > 'Planet.cs' , 'PlanetData.cs' , 'Polygon.cs' , 'ColorHeight.cs' , 'GenerationData.cs'.
 
-Create a PlanetData:
+* **Planet**
+
 
 ![](https://i.gyazo.com/7ca3ae7a7339989b7b8cb02bdbf0e67e.png)
+
+> Fill it with the information:
+
+![]()
