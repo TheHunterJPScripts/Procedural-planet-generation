@@ -457,7 +457,7 @@ namespace Generation
                 t_vertices = new List<Vector3>() { v[vertices[0]], v[vertices[1]], v[vertices[2]] };
                 t_triangles = new List<int>() { 0,1,2 };
                 meshData = new MeshData(t_vertices, t_triangles, t_colors);
-
+                Planet.AddPolygonToQueue(this);
                 return;
             }
 
@@ -471,6 +471,9 @@ namespace Generation
             {
                 for (int y = 0; y < size - x; y++)
                 {
+                    if (Planet.ThreadNeedToQuit())
+                        return;
+
                     Vector3 v1, v2, v3, v4;
 
                     v1 = sub_vertices[x][y];
@@ -617,6 +620,7 @@ namespace Generation
             }
             // Assign the mesh data.
             meshData = new MeshData(t_vertices, t_triangles, t_colors);
+            Planet.AddPolygonToQueue(this);
         }
 
     }

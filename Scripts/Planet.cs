@@ -16,19 +16,23 @@ namespace Generation
     public class Planet : MonoBehaviour
     {
         static private List<Planet> planetList = new List<Planet>();
+        static private Queue<Polygon> polygonsToInstantiate = new Queue<Polygon>();
         static private Queue<Action> queue = new Queue<Action>();
         static private bool isStartDataDone = false;
         static private bool isDataThreadingDone = false;
         static private bool isInstantiated = false;
+        static private bool quit = false;
 
         static private void DataThreadLoop()
         {
-            // Prevent list modification during
+            //Prevent list modification during
             // thread loop.
             lock (planetList)
             {
                 foreach (var planet in planetList)
                 {
+                    if (quit)
+                        return;
                     // Create icosahedron.
                     planet.InitAsIcosahedron();
                     // Subdivide it.
@@ -38,12 +42,25 @@ namespace Generation
 
                     // Generate mesh data.
                     foreach (var poly in planet.polygons)
+                    {
+                        if (quit)
+                            return;
+
                         poly.GenerateMesh();
+                    }
                 }
             }
             isDataThreadingDone = true;
         }
 
+        static public void AddPolygonToQueue(Polygon poly)
+        {
+            polygonsToInstantiate.Enqueue(poly);
+        }
+        static public bool ThreadNeedToQuit()
+        {
+            return quit;
+        }
         static public void AddPlanetToQueue(string name, Vector3 position, int seed, bool randomSeed, Style terrainStyle, GenerationData[] generationData, ColorHeight[] colorHeight, Material material, float radius, int subdivisions, int chunckSubdivisions)
         {
             // Ensure that the program will have an apropiate behaviour.
@@ -86,21 +103,10 @@ namespace Generation
         }
         static public void InstantiateIntoWorld()
         {
-            // Only execute if data and mesh data had been done.
-            // And if the planet is not instantiated.
-            if (!isDataThreadingDone || isInstantiated )
-                return;
-
-            foreach (var planet in planetList)
+            while (polygonsToInstantiate.Count != 0)
             {
-                List<Polygon> poly_list = planet.GetPolygons();
-                foreach (var poly in poly_list)
-                {
-                    // Instantiate polygone.
-                    poly.Instantiate();
-                }
+                polygonsToInstantiate.Dequeue().Instantiate();
             }
-            isInstantiated = true;
         }
 
 
@@ -251,6 +257,12 @@ namespace Generation
                 offset[i].y = rng.Next(-10000, 10000);
                 offset[i].z = rng.Next(-10000, 10000);
             }
+        }
+        private void OnApplicationQuit()
+        {
+            // If the background thread is still running.
+            // quit will make it stop.
+            quit = true;
         }
 
         public Style GetStyle()
