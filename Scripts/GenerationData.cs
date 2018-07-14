@@ -1,14 +1,49 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿/**
+        GenerationData.cs
+        Purpose: Scriptable object that stores the
+        data and some functions for the terrain generation.
+        Require: No other files required.
+
+        @author Mikel Jauregui
+        @version 1.1.0 14/07/2018 
+*/
+
 using UnityEngine;
 
 namespace Generation
 {
     [CreateAssetMenu()]
-    [SerializeField]
     public class GenerationData : ScriptableObject
     {
-        static public float PerlinNoise3D(float x, float y, float z)
+        [Range(1, 10)]
+        [Tooltip("Amounts of calls.")]
+        public int octaves = 8;
+        [Range(0.1f, 1.0f)]
+        [Tooltip("Amplitud variation through octaves.")]
+        public float persistance = 0.5f;
+        [Range(1.0f, 2f)]
+        [Tooltip("Frequency variation through octaves.")]
+        public float lacunarity = 2f;
+        [Range(0.1f, 500)]
+        [Tooltip("General frequency division.")]
+        public float scale = 1;
+        [Range(0f,1f)]
+        [Tooltip("Minimum perlin value that return a value.")]
+        public float minimum_height = 0.5f;
+        [Range(1f,500f)]
+        [Tooltip("Height that will be multiply to the 0 to 1 value.")]
+        public int height_multiplier = 1;
+        [Tooltip("True to invert the values sign.")]
+        public bool invert = false;
+
+        /// <summary>
+        /// Genrate 3D perlin noise value.
+        /// </summary>
+        /// <param name="x"> x axis. </param>
+        /// <param name="y"> y axis. </param>
+        /// <param name="z">z axis. </param>
+        /// <returns> Return a float between 0 and 1. </returns>
+        static private float PerlinNoise3D(float x, float y, float z)
         {
 
             float ab = Mathf.PerlinNoise(x, y);
@@ -23,28 +58,11 @@ namespace Generation
             return abc / 6f;
         }
 
-        [Range(1, 20)]
-        public int octaves = 8;
-        [Range(0.1f, 1.0f)]
-        public float persistance = 0.5f;
-        [Range(1.0f, 2f)]
-        public float lacunarity = 2f;
-        [Range(0.1f, 500)]
-        public float scale = 1;
-        public float minimum_height = 0.5f;
-        public int height_multiplier = 1;
-        public bool invert = false;
-
-        public GenerationData(int octaves = 8, float persistance = 0.5f, float lacunarity = 2.0f, float scale = 1.0f, float minimum_height = 0.0f, int height_multiplier = 1, bool invert = false)
-        {
-            this.octaves = octaves;
-            this.persistance = persistance;
-            this.lacunarity = lacunarity;
-            this.scale = scale;
-            this.minimum_height = minimum_height;
-            this.height_multiplier = height_multiplier;
-            this.invert = invert;
-        }
+        /// <summary>
+        /// Calculate the noise at a specific position.
+        /// </summary>
+        /// <param name="position"> Position. </param>
+        /// <returns> Returns the height at that position.</returns>
         public float CalculateNoise(Vector3 position)
         {
             float x = position.x;
@@ -61,8 +79,11 @@ namespace Generation
                 amplitude *= persistance;
                 frequency *= lacunarity;
             }
+            // Make output to stay between 0 and 1.
             output /= octaves;
-            output = output > minimum_height ? output - minimum_height : 0;
+
+            // if output is less than minimum_height then set to 0.
+            output = output > minimum_height ? Mathf.InverseLerp(0, 1f - minimum_height, output - minimum_height) : 0;
             output *= height_multiplier;
             if (invert)
                 output *= -1;
