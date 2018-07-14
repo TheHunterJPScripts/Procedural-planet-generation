@@ -34,5 +34,12 @@ To start the thread that will calculate the data for the mesh sphere generation 
 Instantiate the planet into the scene:
 >Planet.InstantiateIntoWorld();
 
+Wait until the planet data have been compute. Then load the chunks in range to the position.
+>Planet.HideAndShow(Vector3 position);
+
+Both InstantiateIntoWorld and HideAndShow can be used at the same time. In that case
+InstantiateIntoWorld will generate the planet until it's fully generated and the will hide all the
+terrain that is not in range of the position.
+
 The end result should look like this:
-![](https://i.gyazo.com/a9883d5782209245d504ea0c3c11803a.png)
+![](https://i.gyazo.com/f6c185f8c376b7a620202f5381a32ffe.png)
