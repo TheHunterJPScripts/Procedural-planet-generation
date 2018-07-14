@@ -1,4 +1,4 @@
-Any bug catch or sugestions to improve the code will be apreciated.
+This code is still WIP so please if you find any bug or have some sugestions to improve the code notify me.
 
 # Procedural-planet-generation (Unity Project)
 Generate planets proceduraly.
