@@ -1,5 +1,3 @@
-This code is still WIP so please if you find any bug or have some sugestions to improve the code notify me.
-
 # New feature added:
 Now the planet have water and can be populate:
 ![](https://i.gyazo.com/0e9afa84b7d5c65a1bc8ffcbf31b4211.png)
